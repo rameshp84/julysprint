@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountValidate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK( Discount__c), IF( Course_Fee__c &gt; 0, true,false))</errorConditionFormula>
+    <errorDisplayField>Discount__c</errorDisplayField>
+    <errorMessage>Please enter the discount to be offered</errorMessage>
+</ValidationRule>

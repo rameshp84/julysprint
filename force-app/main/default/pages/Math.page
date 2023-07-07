@@ -1,0 +1,21 @@
+<apex:page controller="math">
+   <apex:form >
+    <apex:pageBlock >
+    <apex:pageblockSection >
+        <apex:inputText label="A:" value="{!a}" />
+        <apex:inputText label="B:" value="{!b}" />
+        <apex:outputText label="Add" value="{!c}" />
+        <apex:outputText label="Sub" value="{!d}" />
+        <apex:outputText label="Mul" value="{!e}" />
+        <apex:outputText label="Div" value="{!f}" />
+     </apex:pageblockSection>
+         <apex:pageBlockButtons location="Bottom">
+        	<!--  <apex:commandButton value="Addition" action="{!addition}"/>
+            <apex:commandButton value="Subtraction" action="{!Subtraction}"/>
+            <apex:commandButton value="Multiplication" action="{!Multiplication}"/>
+            <apex:commandButton value="Division" action="{!Division}"/>-->
+         <apex:commandButton value="All" action="{!all}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

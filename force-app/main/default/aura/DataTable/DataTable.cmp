@@ -1,0 +1,31 @@
+<aura:component controller="DataTablecomponent">
+    
+    <!--<lightning:button label="ClickMe" ></lightning:button>-->
+    <aura:attribute name="myrows" type="Student_Registration_Form__c[]" />
+    <aura:attribute name="mycolumns" type="List"/>
+    
+    <div class="slds-size_5-of-12">
+    	<div class="slds-page-header">
+    		<div class="slds-align_absolute-left">
+    			<div class="slds-text-heading_large">
+                	<div class="slds-m-top_xx-large">
+                    	<!--<div class="slds-box slds-box_xx-small">-->
+                        <b>List of Students</b><br/> 
+                    	<!--</div>-->                            
+                	</div>
+            	</div>
+    		</div>
+    	</div>
+    </div>
+       
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+    
+    
+     
+    <lightning:datatable data="{! v.myrows }"
+                         columns="{! v.mycolumns }"
+                         keyField="id"
+                         hideCheckboxColumn="true"/>
+
+
+</aura:component>

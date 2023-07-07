@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dSpecialization__c</fullName>
+    <externalId>false</externalId>
+    <label>dSpecialization</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gynacologist</fullName>
+                <default>false</default>
+                <label>Gynacologist</label>
+            </value>
+            <value>
+                <fullName>General Surgeon</fullName>
+                <default>false</default>
+                <label>General Surgeon</label>
+            </value>
+            <value>
+                <fullName>Opthomologist</fullName>
+                <default>false</default>
+                <label>Opthomologist</label>
+            </value>
+            <value>
+                <fullName>ENT</fullName>
+                <default>false</default>
+                <label>ENT</label>
+            </value>
+            <value>
+                <fullName>Dermotologist</fullName>
+                <default>false</default>
+                <label>Dermotologist</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

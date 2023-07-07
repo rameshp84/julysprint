@@ -1,0 +1,5 @@
+<apex:page controller="TestClass">
+    <apex:pageBlock title="List of Students">
+        
+    </apex:pageBlock>
+</apex:page>

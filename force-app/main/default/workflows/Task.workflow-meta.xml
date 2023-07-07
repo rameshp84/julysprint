@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>FolloUpEmailonTask</fullName>
+        <description>FolloUpEmailonTask</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Follow_Up_Task_1648444259151</template>
+    </alerts>
+    <alerts>
+        <fullName>Task_Follow_Up</fullName>
+        <description>Task Follow Up</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <recipient>Manager</recipient>
+            <type>roleSubordinates</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Task_Follow_Up_1</template>
+    </alerts>
+</Workflow>

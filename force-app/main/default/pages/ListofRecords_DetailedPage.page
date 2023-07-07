@@ -1,0 +1,25 @@
+<apex:page standardController="Doctor__c" recordSetVar="Items" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Records">
+            <apex:pageBlockSection >
+                <apex:pageBlock title="List of Records">
+                    <apex:pageBlockTable value="{!Items}" var="a">
+                        <apex:column headerValue="Doctors Name">
+                            <apex:commandLink value="{!a.Name}">
+                                <apex:param name="ReferenceID" value="{!a.ID}"/>                                
+                            </apex:commandLink>
+                        </apex:column>                        
+                        <apex:column value="{!a.dGender__c}"/>
+                        <apex:column value="{!a.dPhone__c}"/>
+                        <apex:column value="{!a.dQualification__c}"/>
+                        <apex:column value="{!a.dSpecialization__c}"/>
+                        <apex:column value="{!a.Number_of_Patients__c}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>            
+                <apex:pageBlock title="Record Detailed Page">
+                    <apex:detail subject="{!$CurrentPage.Parameters.ReferenceID}"/>
+                </apex:pageBlock>
+            </apex:pageBlockSection>        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

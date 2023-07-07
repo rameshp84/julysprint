@@ -1,0 +1,22 @@
+<apex:page controller="AddAccountController" tabStyle="Account" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Add Account">
+            <apex:pageBlockButtons >                  
+                <apex:commandButton value="Save" action="{!save}" reRender="liste" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons> 
+            <apex:pageBlockSection title="Account Details" columns="1">           
+                <apex:inputField value="{!act.name}" />
+                <apex:inputField value="{!act.site}"/>
+                <apex:inputField value="{!act.type}"/>
+                <apex:inputField value="{!act.accountNumber}"/>             
+            </apex:pageBlockSection>         
+            <apex:pageBlockTable value="{!Account}" var="acc" id="liste">             
+                <apex:column value="{!acc.Name}"/>           
+                <apex:column value="{!acc.Site}"/>              
+                <apex:column value="{!acc.type}"/>              
+                <apex:column value="{!acc.accountNumber}"/>
+            </apex:pageBlockTable>            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

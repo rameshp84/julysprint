@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Discount_Email_of_Offer_Availablity</fullName>
+        <description>Discount Email of Offer Availablity</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Student_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Dicount_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Sending_a_Birthday_Wishes_Email</fullName>
+        <description>Sending a Birthday Wishes Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Student_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Birthaday_Wish</template>
+    </alerts>
+    <alerts>
+        <fullName>Sending_a_Welcome_Email_when_Admission_is_created</fullName>
+        <description>Sending a Welcome Email when Admission is created</description>
+        <protected>true</protected>
+        <recipients>
+            <field>Student_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Welcome_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Trigger_Email</fullName>
+        <description>Trigger Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Student_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Welcome_Email</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Action_1_Pending</fullName>
+        <field>Discount_Status__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Action 1 Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Action_2_Approved</fullName>
+        <field>Discount_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Action 2 Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Action_3_Rejected</fullName>
+        <field>Discount_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Action 3 Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Action_4_cancelled</fullName>
+        <field>Discount_Status__c</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Action 4 cancelled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Mobile_Message</fullName>
+        <apiVersion>45.0</apiVersion>
+        <endpointUrl>https://123</endpointUrl>
+        <fields>Id</fields>
+        <fields>Mobile__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>ram244@salesforce.com</integrationUser>
+        <name>Mobile Message</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Admission Task</fullName>
+        <actions>
+            <name>Follow_UP</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Admission__c.Student_Email__c</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>Admission__c.Offer_Start_Date__c</offsetFromField>
+            <timeLength>18</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Birthaday Wish</fullName>
+        <active>false</active>
+        <formula>Upcoming_DOB__c =  DOB__c</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sending_a_Birthday_Wishes_Email</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Admission__c.Upcoming_DOB__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Message to Mobile</fullName>
+        <actions>
+            <name>Mobile_Message</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Admission__c.Mobile__c</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Test</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Admission__c.Percent_of_Marks__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Welcome Email on Admission Created</fullName>
+        <actions>
+            <name>Sending_a_Welcome_Email_when_Admission_is_created</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Admission__c.Student_Email__c</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Follow_UP</fullName>
+        <assignedTo>ram244@salesforce.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>-1</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Admission__c.Offer_End_Date__c</offsetFromField>
+        <priority>High</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Follow UP</subject>
+    </tasks>
+</Workflow>

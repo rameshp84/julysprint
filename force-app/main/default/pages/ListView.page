@@ -1,0 +1,4 @@
+<apex:page standardController="Doctor__c" recordSetVar="recrds">
+    <apex:sectionHeader title="Doctors" subtitle="Home" help="https://help.salesforce.com"/>
+    <apex:listViews type="Doctor__c" id="DCID"/>
+</apex:page>

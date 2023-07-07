@@ -1,0 +1,4 @@
+<apex:page standardController="Account">
+    <apex:sectionHeader title="Accounts" subtitle="Home" help="https://help.salesforce.com"/>
+    <apex:listViews type="Account" id="AccntId"/>
+</apex:page>

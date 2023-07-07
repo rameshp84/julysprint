@@ -1,0 +1,16 @@
+<apex:page standardController="Doctor__c" recordSetVar="Recrds">
+    <apex:form >
+    	<apex:pageBlock title="List of Records">
+        	<apex:commandButton value="Next" action="{!Next}"/>
+            <apex:commandButton value="Previous" action="{!Previous}"/>
+            <apex:commandButton value="First" action="{!First}"/>
+            <apex:commandButton value="Last" action="{!Last}"/>
+            <apex:pageBlockTable value="{!Recrds}" var="a">
+            	<apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.dGender__c}"/>
+                <apex:column value="{!a.dPhone__c}"/>
+                <apex:column value="{!a.dQualification__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

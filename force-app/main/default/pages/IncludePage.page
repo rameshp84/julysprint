@@ -1,0 +1,4 @@
+<apex:page >
+    <apex:include pageName="ListView"/>
+    <apex:include pageName="EnhancedList"/>
+</apex:page>

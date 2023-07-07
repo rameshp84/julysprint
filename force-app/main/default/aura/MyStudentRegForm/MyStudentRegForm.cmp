@@ -1,0 +1,35 @@
+<aura:component controller="Insert_TaskSvrcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--Insert_TaskSvrcontroller-->
+    <aura:attribute name="RegForm" type="Student_Registration_Form__c" default="{'SobjectType':'Student_Registration_Form__c'}"/>
+        
+    <div class="slds-size_5-of-12">
+    <div class="slds-page-header">
+    	<div class="slds-align_absolute-left">
+    		<div class="slds-text-heading_large">
+                <div class="slds-m-top_xx-large">
+                    <!--<div class="slds-box slds-box_xx-small">-->
+                        <b>Please Enter Student Details</b><br/> 
+                    <!--</div>-->                            
+                </div>
+            </div>
+    	</div>
+    </div>
+    </div>
+    
+    <lightning:input name="studentName" label="Student Name" value="{!v.RegForm.Name}"/>
+    <lightning:input name="parentName" label="Parent Name" value="{!v.RegForm.Parent_Name__c}"/>
+    <lightning:input name="className" label="Class Name" value="{!v.RegForm.Class_Name__c}"/>
+    <lightning:input name="mobileNo" label="Mobile Number" value="{!v.RegForm.Mobile_Number__c}"/>        
+    <lightning:inputField name="State" label="State" value="{!v.RegForm.State__c}"/>
+    
+    <!--<lightning:select value="{!v.RegForm.State__C}" label="State">       
+    <option value="choose">Choose State...</option> 
+        <aura:iteration items="{!v.statepicvalue}" var="s">
+                <option value="{!s.value}"></option>
+        </aura:iteration> 
+</lightning:select> -->
+    
+    <br/><lightning:button label="Submit" onclick="{!c.doSubmit}"/>
+    
+    
+</aura:component>

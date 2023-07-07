@@ -1,0 +1,132 @@
+<aura:component controller="Update_TaskSvrController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+	
+    <aura:attribute name="view" type="Object"/>
+    <aura:attribute name="nameEditMode" type="boolean" default="false" />
+    <aura:attribute name="parentEditMode" type="boolean" default="false" />
+    <aura:attribute name="classEditMode" type="boolean" default="false" />
+    
+    <tr>
+        
+        <!-- Inline Edit for Student Name -->
+        <td ondblclick="{!c.inlineEditName}" >
+            <span class="slds-grid slds-grid_align-spread">
+                <aura:if isTrue="{!v.nameEditMode == false}">
+            		<div class="slds-truncate" >{!v.view.Name}</div>
+            		<button onclick="{!c.inlineEditName}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit Name">
+                		<lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+            		</button>
+                    <aura:set attribute="else">
+                        <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                            <div class="slds-popover__body">
+                                <div class="slds-form-element slds-grid slds-wrap">
+                                    <div class="slds-form-element__control slds-grow">
+                                        <ui:inputText class="slds-input inputFieldWidth"
+                                                      labelClass="slds-form-element__label slds-form-element__label_edit slds-no-flex"
+                                                      aura:id="nameId"
+                                                      blur="{!c.closeNameBox}"
+                                                      required="true"
+                                                      label="Student Name"
+                                                      value="{!v.view.Name}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </aura:set>
+                </aura:if>
+            </span>
+        </td>
+        
+        <!-- Inline Edit for Parent Name -->
+        
+        <td ondblclick="{!c.inlineEditParent}" >
+            <span class="slds-grid slds-grid_align-spread">
+                <aura:if isTrue="{!v.parentEditMode == false}">
+            		<div class="slds-truncate" >{!v.view.Parent_Name__c}</div>
+            		<button onclick="{!c.inlineEditParent}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit Name">
+                		<lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+            		</button>
+                    <aura:set attribute="else">
+                        <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                            <div class="slds-popover__body">
+                                <div class="slds-form-element slds-grid slds-wrap">
+                                    <div class="slds-form-element__control slds-grow">
+                                        <ui:inputText class="slds-input inputFieldWidth"
+                                                      labelClass="slds-form-element__label slds-form-element__label_edit slds-no-flex"
+                                                      aura:id="parentId"
+                                                      blur="{!c.closeParentBox}"
+                                                      required="true"
+                                                      label="Parents Name"
+                                                      value="{!v.view.Parent_Name__c}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </aura:set>
+                </aura:if>
+            </span>
+        </td>
+        
+        <!-- Inline Edit for Class Name -->
+        
+         <td ondblclick="{!c.inlineEditClass}" >
+            <span class="slds-grid slds-grid_align-spread">
+                <aura:if isTrue="{!v.classEditMode == false}">
+            		<div class="slds-truncate" >{!v.view.Class_Name__c}</div>
+            		<button onclick="{!c.inlineEditClass}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit Name">
+                		<lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+            		</button>
+                    <aura:set attribute="else">
+                        <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                            <div class="slds-popover__body">
+                                <div class="slds-form-element slds-grid slds-wrap">
+                                    <div class="slds-form-element__control slds-grow">
+                                        <ui:inputText class="slds-input inputFieldWidth"
+                                                      labelClass="slds-form-element__label slds-form-element__label_edit slds-no-flex"
+                                                      aura:id="classId"
+                                                      blur="{!c.closeClassBox}"
+                                                      required="true"
+                                                      label="Class Name"
+                                                      value="{!v.view.Class_Name__c}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </aura:set>
+                </aura:if>
+            </span>
+        </td>
+        
+        <!-- Inline Edit for Mobile Number -->
+        <!--
+            <td ondblclick="{!c.inlineEditMobile}" >
+            <span class="slds-grid slds-grid_align-spread">
+                <aura:if isTrue="{!v.mobileEditMode == false}">
+            		<div class="slds-truncate" >{!v.view.Mobile_Number__c}</div>
+            		<button onclick="{!c.inlineEditMobile}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit Name">
+                		<lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+            		</button>
+                    <aura:set attribute="else">
+                        <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                            <div class="slds-popover__body">
+                                <div class="slds-form-element slds-grid slds-wrap">
+                                    <div class="slds-form-element__control slds-grow">
+                                        <ui:inputText class="slds-input inputFieldWidth"
+                                                      labelClass="slds-form-element__label slds-form-element__label_edit slds-no-flex"
+                                                      aura:id="mobileId"
+                                                      blur="{!c.closeMobileBox}"
+                                                      required="true"
+                                                      label="Mobile Number"
+                                                      value="{!v.view.Mobile_Number__c}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </aura:set>
+                </aura:if>
+            </span>
+        </td>  -->
+    </tr>
+    
+</aura:component>

@@ -1,0 +1,21 @@
+<apex:page standardController="Doctor__c">
+    
+    <apex:sectionHeader title="Doctor Edit" subtitle="New Doctor" help="https://help.salesforce.com"/>
+    <apex:form >
+    	<apex:pageBlock title="Doctor Edit">
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Save" action="{!save}"/>
+                
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Information" columns="1"><br/>
+                <apex:inputField Value="{!Doctor__c.Name}"/>
+                <apex:inputField Value="{!Doctor__c.dGender__c}"/>
+                <apex:inputField Value="{!Doctor__c.dQualification__c}"/>
+                <apex:inputField Value="{!Doctor__c.dSpecialization__c}"/>
+                <apex:inputField Value="{!Doctor__c.dPhone__c}"/>
+                <apex:inputField Value="{!Doctor__c.dEmail__c}"/>
+                <apex:inputField Value="{!Doctor__c.dAddress__c}"/>             
+        	</apex:pageBlockSection>        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

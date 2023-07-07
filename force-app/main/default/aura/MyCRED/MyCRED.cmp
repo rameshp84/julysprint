@@ -1,0 +1,114 @@
+<aura:component controller="Update_TaskSvrController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" access="global" >
+    
+    <!-- Memory Allocation -->
+    
+    <aura:attribute name="RegForm" type="Student_Registration_Form__c" default="{'SobjectType':'Student_Registration_Form__c'}"/>
+    <aura:attribute name="myrows" type="Student_Registration_Form__c[]" />
+    <aura:attribute name="mycolumns" type="List"/>
+    
+    <aura:attribute name="SearchKeyword" type="String" />
+    <aura:attribute name="mydata" type="List"/>
+    
+    <aura:attribute name="view" type="Object"/>
+    <aura:attribute name="nameEditMode" type="boolean" default="false" />
+    <aura:attribute name="parentEditMode" type="boolean" default="false" />
+    <aura:attribute name="classEditMode" type="boolean" default="false" />
+    
+    <aura:attribute name="delIds" type="List"/>
+    		
+    
+    <!-- ************ INSERT STARTS HERE ************ --> 
+   
+    <div class="slds-size_5-of-12">
+    	<div class="slds-page-header">
+    		<div class="slds-align_absolute-left">
+    			<div class="slds-text-heading_large">
+                	<div class="slds-m-top_xx-large">
+                    	<b>Please Enter Student Details</b><br/> 
+                	</div>
+            	</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <lightning:input name="studentName" label="Student Name" value="{!v.RegForm.Name}"/>
+    <lightning:input name="parentName" label="Parent Name" value="{!v.RegForm.Parent_Name__c}"/>
+    <lightning:input name="className" label="Class Name" value="{!v.RegForm.Class_Name__c}"/>
+    <lightning:input name="mobileNo" label="Mobile Number" value="{!v.RegForm.Mobile_Number__c}"/>        
+    <lightning:inputField name="State" label="State" value="{!v.RegForm.State__c}"/>
+    
+    <br/><lightning:button label="Submit" onclick="{!c.doSubmit}"/><br/><br/><br/>
+    
+    <!-- ************ INSERT ENDS HERE ************ -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>    
+     
+    <!--<lightning:datatable data="{! v.myrows }"
+                         columns="{! v.mycolumns }"
+                         keyField="id"
+                         hideCheckboxColumn="true"/> -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler event="force:refreshView" action="{!c.init}" />
+    
+    <!-- ************ SEARCH STARTS HERE ************ -->   
+	
+    
+    <div class = "slds-size--5-of-8">
+        <lightning:input aura:id="searchId" type="search" label="Search Student by Name and Update if required" name="searchName" value="{!v.SearchKeyword}"/><br/>
+        <lightning:button label="Search" onclick="{!c.doSearch}"/>
+    </div>
+    
+     <div class="slds-size_5-of-12">
+    	<div class="slds-page-header">
+    		<div class="slds-align_absolute-left">
+    			<div class="slds-text-heading_large">
+                	<div class="slds-m-top_xx-large">
+                    	<!--<div class="slds-box slds-box_xx-small">-->
+                        <b>List of Students</b><br/> 
+                    	<!--</div>-->                            
+                	</div>
+            	</div>
+    		</div>
+    	</div>
+    </div>
+    
+         <div class="slds-grid slds-grid--align-end">         
+         <button class="slds-button slds-button--brand" onclick="{!c.doAllUpdate}">Update</button>
+    </div>
+    
+  	<div class="slds">
+		<table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+     	 	<thead>
+            			<tr class="slds-text-heading--label">
+                     <th><span class="slds-truncate" title="Student Name">Student Name</span></th>
+                     <th><span class="slds-truncate" title="Parent Name">Parents Name</span></th>
+                     <th><span class="slds-truncate" title="Class Name">Class Name</span></th>
+                </tr>
+            </thead>  
+          
+			<tbody>
+                <aura:iteration items="{!v.myrows}" var="row">
+                    <c:MyStudentRegRowUpdate view="{!row}"/>
+                </aura:iteration>
+            </tbody> 
+        </table>
+    </div>
+    <br/><br/><br/>
+			    
+    <div class="slds-grid slds-grid--align-end">
+         <button class="slds-button slds-button--brand" onclick="{!c.doDelete}">Delete</button>
+    </div>
+    
+	<lightning:datatable data="{!v.myrows}" 
+    					 columns="{!v.mycolumns}"                          
+                         keyField="Id" 
+                         onrowselection="{!c.handleRowAction}"/>
+  <br/><br/><br/>
+    
+	<!-- ************ SEARCH ENDS HERE ************ -->
+    
+    
+    	  
+    
+</aura:component>

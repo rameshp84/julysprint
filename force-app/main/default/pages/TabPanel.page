@@ -1,0 +1,22 @@
+<apex:page >
+    <style>
+    .landingPage
+        {
+        background-color:Green;
+        color:white;
+		background-image:none
+        }
+    .NonlandingPages
+        {
+        background-color:Black;
+        color:white;
+		background-image:none
+        }
+    </style>
+    <apex:tabPanel switchType="Client" selectedTab="Tab" id="TabPanels" activeTabClass="landingPage" inactiveTabClass="NonlandingPages">
+    	<apex:tab label="Home" name="Tab" id="HomeTab">Home Page</apex:tab>
+        <apex:tab label="Accounts" name="Tab1" id="AcntsTab">This tab is related to Accounts</apex:tab>
+        <apex:tab label="Contacts" name="Tab2" id="CntsTab">This tab is related to Contacts</apex:tab>
+        <apex:tab label="Doctors" name="Tab3" id="DctsTab">This tab is related to Doctors</apex:tab>
+    </apex:tabPanel>
+</apex:page>

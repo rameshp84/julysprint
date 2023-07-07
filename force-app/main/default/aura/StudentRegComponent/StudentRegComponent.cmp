@@ -1,0 +1,11 @@
+<aura:component controller="Insert_TaskSvrcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="RegForm" type="Registration_Form__c" default="{'SobjectType':'Registration_Form__c'}"/>
+    
+    <lightning:input name="studentName" label="Student Name" value="{!v.RegForm.Student_Name__c}"/>
+    <lightning:input name="parentName" label="Parent Name" value="{!v.RegForm.Parent_Name__c}"/>
+    <lightning:input name="className" label="Class Name" value="{!v.RegForm.Class_Name__c}"/>
+    <lightning:input name="mobileNo" label="Mobile Number" value="{!v.RegForm.Mobile_No__c}"/>
+    
+    <lightning:button label="Submit" onclick="{!c.doSubmit}"/>
+</aura:component>

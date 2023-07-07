@@ -1,0 +1,43 @@
+<!--Student Registration Form Component -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="sname" type="String" default=""/>
+    <aura:attribute name="pname" type="String" default=""/>
+    <aura:attribute name="Mobile" type="Integer" default=""/>
+    <aura:attribute name="Class" type="string" default=""/>
+    <aura:attribute name="Studyhrs" type="String[]" default="Less than 4hrs, Between 4-8 hrs, More than 8 hrs"/>
+    <aura:attribute name="Intrest" type="Boolean" default="false" />
+    
+    
+    <div class="slds-page-header">
+    	<div class="slds-align_absolute-center">
+    		<div class="slds-text-heading_large">
+                <div class="slds-m-top_xx-large">
+                    <div class="slds-box slds-box_xx-small">
+                        <b>STUDENT REGISTRATION FORM</b><br/> 
+                    </div>                            
+                </div>
+            </div>
+    	</div>
+    </div>
+    
+    <div class="slds-size_3-of-12">
+    <lightning:input label="Enter Student Name" value="{!v.sname}" />
+    <lightning:input label="Enter Parent/Guardian Name" value="{!v.pname}" />
+    <lightning:input label="Enter Mobile Number" value="{!v.Mobile}" />
+    <lightning:input label="Which Class are you studying" value="{!v.Class}" />
+    <lightning:select label="How many hours do you study ?">
+    	<aura:iteration items="{!v.Studyhrs}" var="hrs">
+            <option value="{!hrs}" text="{!hrs}" />
+        </aura:iteration>
+    </lightning:select><br/>    
+    <lightning:input label="Are you Intrested in Online Training" type="checkbox" aura:id="intrestCB" onchange="{!c.onChangeCheckbox}"/>
+        <aura:if isTrue="{!v.Intrest}"> <br/>
+    		Yes, Iam intrested
+         <aura:set attribute="else"><br/>
+         	No, Iam not intrested
+         </aura:set>
+    	</aura:if> 
+    </div>
+
+</aura:component>

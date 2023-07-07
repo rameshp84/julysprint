@@ -1,0 +1,7 @@
+<apex:page controller="Set_Class">
+    <apex:pageBlock title="Set of Students">
+    	<apex:pageBlockTable value="{!stunames}" var="s">
+        	<apex:column value="{!s}"/>
+        </apex:pageBlockTable>       
+    </apex:pageBlock>
+</apex:page>

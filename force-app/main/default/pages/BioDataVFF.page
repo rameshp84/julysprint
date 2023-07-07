@@ -1,0 +1,77 @@
+<apex:page sidebar="false">'
+    <apex:sectionHeader title="Personal Information" subtitle="Biodata" help="https://www.golarsnetworks.com"/>
+    <apex:form >       
+
+<!--Using Without Page Block -->       	              
+ <!--
+        <apex:outputLabel >Enter Your Email</apex:outputLabel>
+        <apex:inputText /><br/>                
+        <apex:outputLabel >Enter Your Password</apex:outputLabel>
+        <apex:inputSecret /><br/>                
+        <apex:outputLabel >Enter Your Gender</apex:outputLabel>
+ 		<apex:inputCheckbox /><br/> 
+        <apex:outputLabel >Enter Your Address</apex:outputLabel>
+        <apex:inputTextArea /> <br/> 
+-->
+ <!--Using Page Block Section -->
+        	<apex:pageBlock >
+            	<apex:pageBlockButtons location="top">
+            		<apex:commandButton value="Browse" action="https://google.com"/>
+            	</apex:pageBlockButtons>
+      <!--
+            <apex:outputLabel>Enter Your Name</apex:outputLabel>
+                	<apex:inputText /> <br/>               
+                	<apex:outputLabel>Enter Your Email</apex:outputLabel>
+                	<apex:inputText />   <br/>             
+                	<apex:outputLabel>Enter Your Password</apex:outputLabel>
+                	<apex:inputSecret />  <br/>              
+                	<apex:outputLabel>Enter Your Gender</apex:outputLabel>
+                	<apex:inputCheckbox /> <br/>
+                   	<apex:outputLabel>Enter Your Address</apex:outputLabel>
+                	<apex:inputTextArea />   <br/>
+	-->
+   <!--Using Page Block Section -->
+   <!--
+            <apex:pageBlockSection title="Page Block Section">                
+                	<apex:outputLabel >Enter Your Name</apex:outputLabel>
+                	<apex:inputText />             
+                	<apex:outputLabel >Enter Your Email</apex:outputLabel>
+                	<apex:inputText /> 
+                	<apex:outputLabel >Enter Your Password</apex:outputLabel>
+                	<apex:inputSecret />
+                	<apex:outputLabel >Enter Your Gender</apex:outputLabel>
+                	<apex:inputCheckbox />
+                   	<apex:outputLabel >Enter Your Address</apex:outputLabel>
+                	<apex:inputTextArea />   <br/>             
+        	</apex:pageBlockSection> 
+    -->
+   <!--Using Page Block Section Item -->         
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Enter Your Full Name</apex:outputLabel>
+                	<apex:inputText />
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Enter Your Email</apex:outputLabel>
+                	<apex:inputText />
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >    
+                	<apex:outputLabel >Enter Your Password</apex:outputLabel>
+                	<apex:inputSecret />
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >
+                	
+                	<apex:selectRadio >
+                        <apex:outputLabel >Enter Your Gender</apex:outputLabel> 
+                        <apex:selectOption itemLabel="Male" itemValue="M"></apex:selectOption>
+                    	<apex:selectOption itemLabel="Female" itemValue="F"></apex:selectOption>
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Enter Your Address</apex:outputLabel>
+                	<apex:inputTextArea />
+                </apex:pageBlockSectionItem>
+        	</apex:pageBlockSection> 
+    	</apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page >
+    <apex:enhancedList type="Doctor__c" height="250" rowsPerPage="10" id="doctors"/>
+    <apex:enhancedList type="Patient__c" height="250" rowsPerPage="10" id="Patients"/>
+</apex:page>

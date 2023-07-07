@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_Birth__c</fullName>
+    <description>This field was create for SCCE application and to store the student DOB</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter your date of birth</inlineHelpText>
+    <label>Date of Birth</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

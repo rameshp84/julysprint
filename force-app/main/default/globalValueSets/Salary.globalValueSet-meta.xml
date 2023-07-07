@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>10K</fullName>
+        <default>false</default>
+        <label>10K</label>
+    </customValue>
+    <customValue>
+        <fullName>15K</fullName>
+        <default>false</default>
+        <label>15K</label>
+    </customValue>
+    <customValue>
+        <fullName>20K</fullName>
+        <default>false</default>
+        <label>20K</label>
+    </customValue>
+    <customValue>
+        <fullName>25K</fullName>
+        <default>false</default>
+        <label>25K</label>
+    </customValue>
+    <customValue>
+        <fullName>30K</fullName>
+        <default>false</default>
+        <label>30K</label>
+    </customValue>
+    <customValue>
+        <fullName>35K</fullName>
+        <default>false</default>
+        <label>35K</label>
+    </customValue>
+    <masterLabel>Salary</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

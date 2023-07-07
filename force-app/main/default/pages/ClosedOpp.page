@@ -1,0 +1,11 @@
+<apex:page controller="ListofClosedOpp">
+
+<apex:PageBlock Title="Closed Opp">
+<Apex:pageBlockTable Value="{!opps}" var="COP">
+<apex:Column Value="{!COP.ID}"/>
+<apex:Column Value="{!COP.StageName}"/>
+</Apex:pageBlockTable>
+
+</apex:PageBlock>
+ 
+</apex:page>

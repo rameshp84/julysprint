@@ -1,0 +1,43 @@
+<apex:page standardController="Doctor__c" recordSetVar="records">
+    <apex:sectionHeader title="Dcotors" subtitle="Home" help="htpps://help.salesforce.com"/>
+    <apex:form >
+        <apex:outputLabel ><b>View:</b>&nbsp;</apex:outputLabel>
+        <apex:selectList size="1" value="{!filterid}">            
+        	<apex:selectOptions value="{!listviewoptions}">
+            	<apex:actionSupport event="onchange" reRender="pagerefresh"/>
+            </apex:selectOptions>
+        </apex:selectList>
+        <apex:pageBlock title="Recent Doctors" id="pagerefresh">
+        	<apex:pageBlockButtons location="top">
+            	<apex:commandButton value="New" action="{!create}"/>            
+                    <span style="float:right;">
+                        <apex:selectList size="1">
+                            <apex:selectOption itemLabel="RecentlyViewed" itemValue="RV"></apex:selectOption>
+                            <apex:selectOption itemLabel="RecentlyCreated" itemValue="RC"></apex:selectOption>
+                            <apex:selectOption itemLabel="RecentlyModified" itemValue="RM"></apex:selectOption>
+                        </apex:selectList>
+                    </span>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!records}" var="a">
+                <apex:column >
+                	<apex:facet name="header">
+                    	<apex:inputCheckbox />
+                    </apex:facet>
+                    <apex:inputCheckbox />
+                </apex:column>
+                <apex:column width="100px">                    
+                    <apex:facet name="header">
+                    	Action
+                    </apex:facet>
+                    <apex:commandLink value="Edit" action="/{!a.Id}/e?retURL={!a.Id}" style="color:steelblue;"/>
+                    &nbsp;
+                    <apex:commandLink value="Delete" action="URLfor{$Action.Account.delete,a.Id}" style="color:red;"/>                    
+                </apex:column>
+            	<apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.dGender__c}"/>
+                <apex:column value="{!a.dPhone__c}"/>
+                <apex:column value="{!a.dQualification__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

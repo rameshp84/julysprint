@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Num1" type="Integer" />
+    <aura:attribute name="Num2" type="Integer" />
+    <aura:attribute name="Add" type="Integer" />
+    <aura:attribute name="Sub" type="Integer" />
+    <aura:attribute name="Mul" type="Integer" />
+    <aura:attribute name="Div" type="Integer" /> <br/>
+     Please perform the below calculations   <br/><br/>
+    <ui:inputNumber label="Enter Num1 : " value="{!v.Num1}"/> <br/>
+    <ui:inputNumber label="Enter Num2 : " value="{!v.Num2}"/> <br/>
+    Addition =  <ui:outputNumber value="{!v.Add}"/> <br/><br/>
+    Subtraction =  <ui:outputNumber value="{!v.Sub}"/> <br/><br/>
+    Multiplication =  <ui:outputNumber value="{!v.Mul}"/> <br/><br/>
+    Division =  <ui:outputNumber value="{!v.Div}"/> <br/><br/>
+    
+    
+    <ui:button label="Calculate" press="{!c.Calculate}"/>
+   
+</aura:component>

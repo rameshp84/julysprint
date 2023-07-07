@@ -1,0 +1,13 @@
+<apex:page standardController="Doctor__c" recordSetVar="Items">
+    <apex:pageBlock title="List of Records">
+    	<apex:dataList value="{!Items}" var="a" type="Square">
+        	<apex:outputText value="{!a.Name}" >  </apex:outputText>
+            <apex:outputText value="{!a.dGender__c}">  </apex:outputText>
+            <apex:outputText value="{!a.dPhone__c}">  </apex:outputText>
+            <apex:outputText value="{!a.dQualification__c}">  </apex:outputText>
+            <apex:outputText value="{!a.dSpecialization__c}">  </apex:outputText>
+            <apex:outputText value="{!a.Number_of_Patients__c}">  </apex:outputText>
+            <apex:outputText value="{!a.dAddress__c}">  </apex:outputText>
+        </apex:dataList>
+    </apex:pageBlock>
+</apex:page>

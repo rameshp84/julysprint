@@ -1,0 +1,21 @@
+<apex:page controller="SOQLDate_Function">
+    <apex:form >
+    	<apex:pageBlock title="List of Opportunities">
+            <apex:pageBlockButtons location="top">
+            	<apex:commandButton value="Closed Today" action="{!closedtoday}"/>
+                <apex:commandButton value="Closed This Week" action="{!closedthisweek}"/>
+                <apex:commandButton value="Closed This Month" action="{!closedthisMon}"/>
+                <apex:commandButton value="Closed This Year" action="{!closedthisYr}"/>
+                <apex:commandButton value="Closed Last Year" action="{!closedlastYr}"/>
+                <apex:commandButton value="Closed Last Two Years" action="{!closedlastNYr}"/>
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!opps}" var="o">
+            	<apex:column value="{!o.Name}"/>
+                <apex:column value="{!o.Amount}"/>
+                <apex:column value="{!o.StageName}"/>
+                <apex:column value="{!o.CreatedDate}"/>
+                <apex:column value="{!o.CloseDate}"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

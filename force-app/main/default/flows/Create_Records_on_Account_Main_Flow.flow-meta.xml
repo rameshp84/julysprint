@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <choices>
+        <name>CreateCase</name>
+        <choiceText>Create a Case</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>CreateContact</name>
+        <choiceText>Create a Contact</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>CreateOpp</name>
+        <choiceText>Create an Opportunity</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <decisions>
+        <name>Create_Records</name>
+        <label>Create Records</label>
+        <locationX>446</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Create_Opp1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CreateOpp</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Opps</targetReference>
+            </connector>
+            <label>Create Opp</label>
+        </rules>
+        <rules>
+            <name>Create_Case1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CreateCase</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Cases</targetReference>
+            </connector>
+            <label>Create Case</label>
+        </rules>
+        <rules>
+            <name>Create_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CreateContact</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_a_Contact</targetReference>
+            </connector>
+            <label>Create Contact</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Create Records on Account - Main Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Records on Account - Main Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Choose_a_Record</name>
+        <label>Choose a Record</label>
+        <locationX>446</locationX>
+        <locationY>158</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_Records</targetReference>
+        </connector>
+        <fields>
+            <name>Choose_the_below</name>
+            <choiceReferences>CreateCase</choiceReferences>
+            <choiceReferences>CreateContact</choiceReferences>
+            <choiceReferences>CreateOpp</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Choose the below</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>SucessMsg_on_Creation</name>
+        <label>SucessMsg on Creation</label>
+        <locationX>446</locationX>
+        <locationY>614</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>SuccessMessage</name>
+            <fieldText>&lt;p&gt;Your record has been successfully created..!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Choose_a_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Create_a_Contact</name>
+        <label>Create a Contact</label>
+        <locationX>578</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>SucessMsg_on_Creation</targetReference>
+        </connector>
+        <flowName>Sub_Flow_Create_Contact_on_Account</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Create_Cases</name>
+        <label>Create Cases</label>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>SucessMsg_on_Creation</targetReference>
+        </connector>
+        <flowName>Sub_Flow_Create_Case_on_Account</flowName>
+        <inputAssignments>
+            <name>recordID</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Create_Opps</name>
+        <label>Create Opps</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>SucessMsg_on_Creation</targetReference>
+        </connector>
+        <flowName>Sub_Flow_Create</flowName>
+        <inputAssignments>
+            <name>recordID</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

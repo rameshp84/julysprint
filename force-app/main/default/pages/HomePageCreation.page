@@ -1,0 +1,56 @@
+<apex:page standardController="Account" recordSetVar="Records">
+    <apex:sectionHeader title="Accounts" subtitle="Home" help="https://help.salesforce.com"/>
+    	<apex:form >
+            <apex:outputLabel ><b>View:</b>&nbsp;</apex:outputLabel>
+            <apex:selectList size="1" value="{!filterid}">
+            <apex:selectOptions value="{!listviewoptions}">
+                <apex:actionSupport event="OnChange" reRender="pbs"/>     
+            </apex:selectOptions>
+            </apex:selectList> <br/><br/>
+            <apex:pageBlock title="Recent Accounts" id="pbs">
+                <apex:pageBlockButtons location="top">
+                    <apex:commandButton value="New" action="{!create}"/>
+                    <span Style="float:right;">
+                        <apex:selectList size="1">
+                            <apex:selectOption itemLabel="RecentlyViewed" itemValue="RV"> </apex:selectOption>
+                            <apex:selectOption itemLabel="RecentlyCreated" itemValue="RC"> </apex:selectOption>
+                            <apex:selectOption itemLabel="RecentlyModified" itemValue="RM"> </apex:selectOption>
+                        </apex:selectList>
+                    </span>
+            	</apex:pageBlockButtons>
+           		<apex:pageBlockTable value="{!Records}" var="a">
+                    <apex:column width="5px">
+                    	<apex:facet name="header">
+                        	<apex:inputCheckbox />
+                        </apex:facet>
+                        <apex:inputCheckbox />
+                    </apex:column>
+                    <apex:column width="100px">
+                        <apex:facet name="header">
+                        	Action
+                        </apex:facet>
+                        <apex:commandLink value="Edit" action="/{!a.Id}/e?retURL={!a.Id}" style="color:steelblue;"/>
+                        &nbsp;
+                        <apex:commandLink value="Delete" action="{!URLfor($Action.Account.delete,a.ID)}" style="color:red"/>
+                    </apex:column>
+                    <!--<apex:column headerValue="Account Name">
+                        <apex:commandLink value="{!a.name}"/>
+                        <apex:param name="AccountID" value="{!a.ID}"/>
+                    </apex:column> -->
+					<apex:column value="{!a.Name}"/>
+                    <apex:column value="{!a.Industry}"/>
+                    <apex:column value="{!a.phone}"/>
+                    <apex:column value="{!a.Type}"/>
+                    <apex:column value="{!a.AnnualRevenue}"/>
+                    <apex:column headerValue="Contacts Related to this Account">
+                        <apex:repeat value="{!a.Contacts}" var="b">
+                            {!b.lastname}&nbsp;&nbsp;{!b.firstname};
+                        </apex:repeat>
+                    </apex:column>
+        	</apex:pageBlockTable>    
+    	</apex:pageBlock>
+        <apex:pageBlock title="Record Detailed page">
+            <apex:detail subject="{!$CurrentPage.Parameters.AccountID}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

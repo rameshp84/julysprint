@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Closed_Lost</name>
+        <label>Closed Lost</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>postchatter1</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Closed_Won</name>
+        <label>Closed Won</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>postchatter</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <name>Stage_Decision</name>
+        <label>Stage Decision</label>
+        <locationX>314</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Upon_Closed_Won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Won</targetReference>
+            </connector>
+            <label>Upon Closed Won</label>
+        </rules>
+        <rules>
+            <name>Upon_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Lost</targetReference>
+            </connector>
+            <label>Upon Closed Lost</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Post To Chatter on Oppo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Post To Chatter on Oppo</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Stage_Decision</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>postchatter</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear {!$Record__Prior.Owner.FirstName} {!$Record__Prior.Owner.LastName}, 
+Below are the Opportunity details that is Closed Won.
+Opportunity Name: {!$Record__Prior.Name},
+Opportunity Stage: {!$Record.StageName},
+Opportunity Amount: {!$Record.Amount}
+Opportunity Closed Date: {!$Record.CloseDate},
+Opportunity: https://rameshpallerla-dev-ed.lightning.force.com/lightning/r/Opportunity/{!$Record.Id}/view</text>
+    </textTemplates>
+    <textTemplates>
+        <name>postchatter1</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear {!$Record__Prior.Owner.FirstName} {!$Record__Prior.Owner.LastName},
+Below are the Opportunity details that is Closed Lost.
+Opportunity Name: {!$Record__Prior.Name},
+Opportunity Stage: {!$Record.StageName},
+Opportunity Amount: {!$Record.Amount}
+Opportunity Closed Date: {!$Record.CloseDate},
+Opportunity: https://rameshpallerla-dev-ed.lightning.force.com/lightning/r/Opportunity/{!$Record.Id}/view</text>
+    </textTemplates>
+</Flow>

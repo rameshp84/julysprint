@@ -1,0 +1,8 @@
+<apex:page >
+    <style>
+    .fontstyle{color:orange}
+    </style>
+    <apex:pageBlock >
+        <apex:outputText Value="My Name is Ramesh" styleclass="fontstyle"/>   
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page controller="Arithmetic_Calculations">
+    <apex:form >
+    	<apex:pageBlock >
+            <apex:pageBlockSection >
+            	<apex:inputText label="XValue" value="{!XValue}"/>
+            	<apex:inputText label="YValue" value="{!YValue}"/>
+                <apex:outputText label="Addition:" value="{!Add}" />
+                <apex:outputText label="Subtraction:" value="{!Sub}" />
+                <apex:outputText label="Multiplication:" value="{!Mul}" />
+                <apex:outputText label="Division:" value="{!Div}" />                
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+            	<apex:commandButton value="calculate" action="{!calculate}"/>
+            </apex:pageBlockButtons>
+        	
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

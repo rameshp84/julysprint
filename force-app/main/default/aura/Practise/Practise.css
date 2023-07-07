@@ -1,0 +1,12 @@
+/* Student Registration Form CSS  */
+/*.THIS .slds-card__header{
+        background-color: aliceblue;
+}*/
+.THIS.slds-size_10-of-12 {
+    
+    margin-left: 500px;
+}
+
+.THIS.slds-text-heading_large{
+     background-color: red;
+}

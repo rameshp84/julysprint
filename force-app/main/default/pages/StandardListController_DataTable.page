@@ -1,0 +1,13 @@
+<apex:page standardController="Doctor__c" recordSetVar="Records">
+    <apex:pageBlock title="List of Records">
+    	<apex:dataTable value="{!Records}" var="a">
+        	<apex:column Value="{!a.Name}" headerValue="Name" />
+             <apex:column value="{!a.dGender__c}" headerValue="Gender"/>
+             <apex:column value="{!a.dPhone__c}" headerValue="Phone"/>
+             <apex:column value="{!a.dQualification__c}" headerValue="Qualification"/>
+             <apex:column value="{!a.dSpecialization__c}" headerValue="Specialization"/>
+             <apex:column value="{!a.Number_of_Patients__c}" headerValue="Number of Patients"/>
+             <apex:column value="{!a.dAddress__c}" headerValue="Address"/>
+        </apex:dataTable>
+    </apex:pageBlock>
+</apex:page>

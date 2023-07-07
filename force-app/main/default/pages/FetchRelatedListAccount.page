@@ -1,0 +1,13 @@
+<apex:page controller="FetchRelatedListAccount">
+    <apex:pageBlock title="List of Accounts and its contacts">
+    	<apex:pageBlockTable value="{!accs}" var="a">
+        		<apex:column value="{!a.Name}"/>
+            	<apex:column value="{!a.Id}"/>
+            <apex:column headerValue="Contacts">
+            	<apex:repeat value="{!a.contacts}" var="b">            		
+                    {!b.lastname}{!b.firstName}
+            	</apex:repeat>
+            </apex:column>
+        </apex:pageBlockTable>        
+    </apex:pageBlock>
+</apex:page>

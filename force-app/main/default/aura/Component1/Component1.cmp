@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	(Component1)<br/>
+    Hello......
+    Welcome to Lightning World......<br/>
+    (Component2 in Component1)<br/>
+    <c:Component2/>
+</aura:component>

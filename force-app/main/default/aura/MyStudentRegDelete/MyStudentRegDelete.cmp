@@ -1,0 +1,15 @@
+<aura:component  controller="Update_TaskSvrController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="view" type="Object"/>
+    <aura:attribute name="delIds" type="List"/> 
+    <aura:attribute name="selectedCount" type="integer" default="0"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler event="force:refreshView" action="{!c.init}" />
+    
+    <lightning:datatable data="{!v.myrows}" 
+    					 columns="{!v.mycolumns}"                          
+                         keyField="Id" 
+                         onrowselection="{!c.handleRowAction}"/>
+  <br/><br/><br/>
+    
+</aura:component>

@@ -1,0 +1,17 @@
+<apex:page >
+	<apex:pageBlock title="List of Patients">
+    	<apex:enhancedList type="Patient__c" rowsPerPage="10" height="300"/>
+    </apex:pageBlock>
+    <apex:pageBlock title="List of Accounts">
+    	<apex:enhancedList type="Account" rowsPerPage="10" height="300"/>
+    </apex:pageBlock>
+    <apex:pageBlock title="List of Contacts"> 
+    	<apex:enhancedList type="Contact" rowsPerPage="10" height="300"/>
+    </apex:pageBlock>
+    <apex:pageBlock title="List of Opportunities">
+    	<apex:enhancedList type="Opportunity" rowsPerPage="10" height="300"/>
+    </apex:pageBlock>
+    <apex:pageBlock title="List of Cases">
+    	<apex:enhancedList type="Case" rowsPerPage="10" height="300"/>
+    </apex:pageBlock>        
+</apex:page>

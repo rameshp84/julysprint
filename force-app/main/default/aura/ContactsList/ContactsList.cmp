@@ -1,0 +1,12 @@
+<aura:component Controller="contactscontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+    <aura:attribute name="Contacts" type="Contact[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:iteration items="{!v.contacts}" var="con">
+        <a href = "{!'#contact/'+con.id}"></a>
+        {!con.Name}
+        {!con.Phone}
+    </aura:iteration>
+    
+</aura:component>

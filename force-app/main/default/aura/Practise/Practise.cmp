@@ -1,0 +1,18 @@
+<aura:component controller="LoginPageClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Username" type="String"/>
+    <aura:attribute name="Password" Type="String"/>
+    
+    <div class="slds-size_9-of-12">                   
+    	<lightning:input label="User Name" name="abc" id="username" placeholder="User Name" value="{!v.Username}"/>
+    	<lightning:input label="Password" type="password" name="abc" id="password"  placeholder="Password" value="{!v.Password}" />
+    </div><br/>
+    
+	<!--<aura:handler name="init" value="{!this}" action="{!c.handleLoginButtomClick}" />-->
+    
+   <lightning:layoutItem size="9">
+    	<lightning:button class="slds-size_full" variant="Brand" label="Login"/><br/><br/>
+       <a href="http://www.golars.com">Forgot Password?</a>
+    </lightning:layoutItem>
+</aura:component>
+
+<!--onClick="{!handleLoginButtomClick}"-->

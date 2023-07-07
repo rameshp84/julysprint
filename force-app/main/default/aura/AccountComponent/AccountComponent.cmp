@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="AccList" type="Account" default="{'SobjectType':'Account'}"/>
+    
+    <lightning:input name="accname" label="Account Name" value="{!v.AccList.Name}"/>
+    <lightning:input name="accnum" label="Account Number" value="{!v.AccList.Accountnumber}"/>
+    <lightning:input name="accind" label="Account Industry" value="{!v.AccList.Industry}"/>
+    <lightning:input name="accphone" label="Phone" value="{!v.AccList.Phone}"/>
+    
+    <lightning:button label="Submit" onclick="{!c.InsertRecord}"/>
+</aura:component>

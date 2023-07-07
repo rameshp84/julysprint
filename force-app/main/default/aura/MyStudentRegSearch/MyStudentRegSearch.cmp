@@ -1,0 +1,54 @@
+<aura:component  controller="Update_TaskSvrController"
+	implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+     
+	<aura:attribute name="PageHeading" type="String" default="Search and Update Students"/>
+    <aura:attribute name="SearchKeyword" type="String" />
+    <aura:attribute name="mydata" type="List"/>
+    
+    <div class="slds-m-top--xx-large">
+    	<div class="slds-page-header">
+    		<div class="slds-align--absolute-center">
+        		<div class="slds-text-heading--large">       
+    				{!v.PageHeading}
+                </div>
+        	</div>
+    	</div>
+    </div>
+    <br/> <br/>
+    
+    <div class = "slds-size--3-of-8">
+    	<lightning:input aura:id="searchId" type="search" label="Search Student by Name" name="searchName" value="{!v.SearchKeyword}"/>
+        <br/>
+        <lightning:button label="Search" onclick="{!c.doSearch}"/>
+        <br/><br/><br/>
+    </div>
+    
+    <div class="slds-grid slds-grid--align-end"> 
+         <button class="slds-button slds-button--brand" onclick="{!c.doAllUpdate}">Update</button>
+    </div>
+    
+    <div class="slds">
+        <table data-reactroot="" class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+            			<div class="slds-truncate" title="Student Name">Student Name</div>
+          			</th>
+                    <th scope="col">
+            			<div class="slds-truncate" title="Parent Name">Parents Name</div>
+          			</th>
+                    <th scope="col">
+            			<div class="slds-truncate" title="Class Name">Class Name</div>
+          			</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.mydata}" var="row">
+                    <c:MyStudentRegRowUpdate view="{!row}"/>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>    
+
+</aura:component>

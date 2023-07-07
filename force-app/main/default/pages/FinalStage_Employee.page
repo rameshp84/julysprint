@@ -1,0 +1,82 @@
+<apex:page controller="FinalStage_Employee" docType="html-5.0" sidebar="false" showHeader="false" >
+    
+    <apex:form id="form">
+        
+        			<!-- *******List View********  -->
+        
+        <apex:sectionHeader title="Employee" subtitle="Home" rendered="{!bl1}"/>
+        <apex:pageBlock rendered="{!bl1}" title="Recent Employees">
+            
+            <apex:pageBlockButtons location="Top">
+                <apex:commandButton value="New" action="{!new_emp}"/>                
+                </apex:pageBlockButtons>
+            
+                <apex:pageBlockTable value="{!emp}" var="el" >
+                    <apex:column headerValue="Name" >                                                               
+                        <apex:commandLink value="{!el.name} {!el.Last_Name__c}" action="{!clemp}" reRender="form">                            
+                        <apex:param value="{!el.id}" name="paramString" assignTo="{!paramString}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                   <!-- <apex:column headervalue="Salesforce Id" value="{!el.Id}"/>-->
+                    <apex:column value="{!el.Id}"/>
+                    <apex:column value="{!el.Email_ID__c}"/>
+                    <apex:column value="{!el.Mobile__c}"/>
+                    <apex:column value="{!el.DOB__c}"/>
+                    <apex:column value="{!el.Age__c}"/>
+                    <apex:column value="{!el.Qualifications__c}"/>
+                    <apex:column value="{!el.DOJ__c}"/>
+                    <apex:column value="{!el.Designation__c}"/>
+                    <apex:column value="{!el.Experience_in_Years__c}"/>                 
+                    <apex:column value="{!el.Salary__c}"/>
+                    <apex:column value="{!el.Picture__c}"/>
+                </apex:pageBlockTable>   
+            
+        </apex:pageBlock>
+        
+        			<!-- *******Edit View********  -->
+        
+        <apex:sectionHeader title="Employee Edit" subtitle="New Employee" rendered="{!bl2}"/>
+        <apex:pageBlock rendered="{!bl2}" title="Employee edit">
+           <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="save" action="{!save_emp}"/>
+                <apex:commandButton value="save & New" action="{!save_newemp}"/>
+                <apex:commandButton value="cancel" action="{!cancelemp}"/>
+            </apex:pageBlockButtons>
+                <apex:pageBlockSection title="Employee Information" collapsible="false">
+                <apex:inputField value="{!e.Name}"/>
+                <apex:inputField value="{!e.Last_Name__c}"/>
+                <apex:inputField value="{!e.Email_ID__c}"/>
+                <apex:inputField value="{!e.Mobile__c}"/>
+                <apex:inputField value="{!e.DOB__c}"/>
+                <apex:inputField value="{!e.Qualifications__c}"/>
+                <apex:inputField value="{!e.Designation__c}"/>
+                <apex:inputField value="{!e.DOJ__c}"/>                 
+     	</apex:pageBlockSection>
+    		<apex:pageBlockSection title="Upload Image Here">
+	    		<apex:inputFile value="{!picture}" accept="image/*" />     
+     		</apex:pageBlockSection>
+        </apex:pageBlock>
+        					<!-- *******Detailed View********  -->
+        
+        <apex:pageBlock rendered="{!bl3}" title="Employee Detail">
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlockButtons location="Top">
+            <apex:commandButton value="Edit" action="{!editemp}"/>
+            <apex:commandButton value="Delete" action="{!delemp}"/>
+            <apex:commandButton value="Back" action="{!backemp}"/>
+       	</apex:pageBlockButtons>
+         
+        <apex:pageBlockSection >               
+            <apex:outputText label="First Name" value="{!e.name} {!e.Last_Name__c}"/>
+            <apex:outputText label="Email" value="{!e.Email_ID__c}"/>
+            <apex:outputText label="Phone" value="{!e.Mobile__c}"/>
+            <apex:outputField value="{!e.DOB__c}"/>
+            <apex:outputField value="{!e.DOJ__c}"/>                 
+            <!--<apex:outputField value="{!emp1.name}"/>-->
+        </apex:pageBlockSection>            
+         </apex:pageBlock>
+        
+     
+    </apex:form>
+</apex:page>

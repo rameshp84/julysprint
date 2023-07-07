@@ -1,0 +1,10 @@
+<apex:page controller="ListofSobjects" >
+  <apex:form >
+      <apex:pageBlock title="List of Sobjects in My Org">
+          <apex:outputLabel value="Sobjects: "/>
+          	<apex:SelectList value="{!val}" size="1">
+      			<apex:selectOptions value="{!Name}"></apex:selectOptions>
+    		</apex:SelectList>
+      </apex:pageBlock>    
+  </apex:form>
+</apex:page>

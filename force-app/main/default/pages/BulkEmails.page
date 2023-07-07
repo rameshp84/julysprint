@@ -1,0 +1,7 @@
+<apex:page controller="BulkEmails">
+    <apex:form >
+    	<apex:pageBlock title="Button for Sending Emails">
+        	<apex:commandButton value="Send Emails" action="{!SendEmail}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

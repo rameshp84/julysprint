@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalaryValidate_JL</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL( Designation__c , &apos;JL&apos;) , ISPICKVAL( Salary__c , &apos;25k&apos;) ||  ISPICKVAL( Salary__c , &apos;30k&apos;) || ISPICKVAL( Salary__c , &apos;35k&apos;))</errorConditionFormula>
+    <errorDisplayField>Salary__c</errorDisplayField>
+    <errorMessage>Please Ensure that you select  15K for JL</errorMessage>
+</ValidationRule>

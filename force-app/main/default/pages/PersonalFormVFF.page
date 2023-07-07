@@ -1,0 +1,61 @@
+<apex:page >
+    <!--{!$User.FirstName}	{!$User.LastName} <br/>
+    {!$Profile.Name} <br/>
+    {!Now()} <br/>
+    {!TODAY()} <br/> -->
+    
+    <apex:sectionHeader title="Personal Information" subtitle="Biodata" help="https://www.golarsnetworks.com"/>
+    <apex:pageMessage title="" severity="warning" strength="1">
+    	Please be careful while filling the details. It cannot be edited again...!!!
+    </apex:pageMessage>
+    	<apex:form >       
+        	<apex:pageBlock >
+            <!--	<apex:pageBlockButtons location="top">
+            		<apex:commandButton value="Browse" action="https://google.com"/>
+            	</apex:pageBlockButtons>             -->
+            	<apex:pageBlockSection >                	
+                	<apex:pageBlockSectionItem >
+                		<apex:outputLabel >Enter Your Full Name</apex:outputLabel>
+                        <apex:inputText />                	
+                    </apex:pageBlockSectionItem><br/>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Enter Your Email</apex:outputLabel>
+                	<apex:inputText />
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >    
+                	<apex:outputLabel >Enter Your Password</apex:outputLabel>
+                	<apex:inputSecret />
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >                	
+                	<apex:selectRadio >                        
+                        <apex:outputLabel >Enter Your Gender</apex:outputLabel> 
+                        <apex:selectOption itemLabel="Male" itemValue="M"></apex:selectOption>
+                    	<apex:selectOption itemLabel="Female" itemValue="F"></apex:selectOption>
+                        <apex:selectOption itemLabel="Others" itemValue="O"></apex:selectOption>
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >
+                    <apex:selectList size="5" multiselect="true"> 
+                    	<apex:outputLabel >Enter Your Qualification</apex:outputLabel>                         
+                        <apex:selectOption itemLabel="Btech" itemValue="BT"></apex:selectOption>
+                    	<apex:selectOption itemLabel="Mtech" itemValue="MT"></apex:selectOption>                        
+                        <apex:selectOption itemLabel="MBA" itemValue="MBA"></apex:selectOption>
+                    	<apex:selectOption itemLabel="MCA" itemValue="MCA"></apex:selectOption>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem><br/>    
+                <apex:pageBlockSectionItem >                    
+                    <apex:outputLabel >Specialized in Subjects</apex:outputLabel>                     
+                    <apex:selectCheckboxes > 
+                        <apex:selectOption itemLabel="Physics" itemValue="Phy"></apex:selectOption>
+                        <apex:selectOption itemLabel="Chemistry" itemValue="Che"></apex:selectOption>                        
+                        <apex:selectOption itemLabel="Maths" itemValue="Mth"></apex:selectOption>                        
+                    </apex:selectCheckboxes>
+                </apex:pageBlockSectionItem><br/>        
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Enter Your Residential Address</apex:outputLabel>
+                	<apex:inputTextArea />
+                </apex:pageBlockSectionItem>
+        	</apex:pageBlockSection> 
+    	</apex:pageBlock>
+    </apex:form>
+</apex:page>

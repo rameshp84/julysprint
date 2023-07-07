@@ -1,0 +1,15 @@
+<aura:component controller="AccountControllerSurya">
+							
+<aura:attribute name="myrows" type="Account[]"/>
+<aura:attribute name="mycolumns" type="List"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+
+<div style="height: 300px">
+<lightning:datatable
+keyField="id"
+                data="{!v.myrows}"
+                columns="{!v.mycolumns}"
+hideCheckboxColumn="true"/>
+</div>
+</aura:component>

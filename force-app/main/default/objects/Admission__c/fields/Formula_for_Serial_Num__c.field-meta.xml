@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Formula_for_Serial_Num__c</fullName>
+    <externalId>false</externalId>
+    <formula>LEFT( CreatedBy.FirstName , 1) +
+LEFT( CreatedBy.LastName , 1) + &quot; : &quot; +
+S_No__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Formula for Serial Num</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

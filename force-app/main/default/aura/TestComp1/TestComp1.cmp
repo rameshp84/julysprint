@@ -1,0 +1,4 @@
+<aura:component >
+	Hello!! How are you?
+    <ui:Button label="ClickMe" press="{!c.FirstMethod}"/>
+</aura:component>

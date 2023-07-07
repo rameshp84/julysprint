@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Transfer ownership of accounts when a user leaves their role.</description>
+    <interviewLabel>Reassign accounts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reassign accounts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Collect_Usernames</name>
+        <label>Collect Usernames</label>
+        <locationX>241</locationX>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>EnterUsernames</name>
+            <fieldText>So you need to reassign some accounts?
+
+No problem! First, we need the username of the person who&apos;s moving on to a new role.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>User1_username</name>
+            <dataType>String</dataType>
+            <fieldText>User whose accounts need to be reassigned</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>other_usernames</name>
+            <fieldText>Then we need the usernames of the people we want to assign the accounts to.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>User2_username</name>
+            <dataType>String</dataType>
+            <fieldText>Enter username of new hot accounts owner</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>User3_username</name>
+            <dataType>String</dataType>
+            <fieldText>Enter username of other accounts owner</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Collect_Usernames</startElementReference>
+    <status>Draft</status>
+</Flow>

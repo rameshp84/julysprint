@@ -1,0 +1,16 @@
+<apex:page controller="RelationalSOQL_PTC">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+            	<apex:commandButton value="standardlookup" action="{!standardlookup}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!accs}" var="a">
+                <apex:column value="{!a.Name}"/>
+            	<apex:column value="{!a.Industry}"/>                
+                    <apex:repeat value="{!a.contacts}" var="b">
+                    	<apex:column value="{!b.lastname}" headerValue=""/>
+                    </apex:repeat>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

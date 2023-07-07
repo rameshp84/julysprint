@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Doctor</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Doctors</value>
+    </caseValues>
+    <layouts>
+        <layout>Doctor Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Neurologist</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Pediatrician</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Psychiatrist</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Checkbox_Error</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Test_Detailed</name>
+    </webLinks>
+</CustomObjectTranslation>

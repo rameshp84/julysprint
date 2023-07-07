@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <assignments>
+        <name>Discount_is_0</name>
+        <label>Discount is 0%</label>
+        <locationX>776</locationX>
+        <locationY>298</locationY>
+        <assignmentItems>
+            <assignToReference>Discount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Discount_Field</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Discount_is_10</name>
+        <label>Discount is 10%</label>
+        <locationX>393</locationX>
+        <locationY>292</locationY>
+        <assignmentItems>
+            <assignToReference>Discount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>10.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Discount_Field</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Discount_is_5</name>
+        <label>Discount is 5%</label>
+        <locationX>617</locationX>
+        <locationY>292</locationY>
+        <assignmentItems>
+            <assignToReference>Discount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Discount_Field</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Determine_Discount</name>
+        <label>Determine Discount</label>
+        <locationX>504</locationX>
+        <locationY>73</locationY>
+        <defaultConnector>
+            <targetReference>Discount_is_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Discount</defaultConnectorLabel>
+        <rules>
+            <name>Full_Discount</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AccountRevenue</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>2.0E8</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Discount_is_10</targetReference>
+            </connector>
+            <label>Full Discount</label>
+        </rules>
+        <rules>
+            <name>Partial_Discount</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AccountRevenue</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0E8</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>AccountRevenue</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0E8</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Discount_is_5</targetReference>
+            </connector>
+            <label>Partial Discount</label>
+        </rules>
+    </decisions>
+    <description>Calculates a discount for an opportunity based on the annual revenue of the associated account</description>
+    <interviewLabel>Calculate discounts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Calculate discounts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Find_Related_Account</name>
+        <label>Find Related Account</label>
+        <locationX>249</locationX>
+        <locationY>59</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Determine_Discount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>AccountRevenue</assignToReference>
+            <field>AnnualRevenue</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Discount_Field</name>
+        <label>Update Discount Field</label>
+        <locationX>616</locationX>
+        <locationY>456</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>OpportunityId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Discount_Percentage1__c</field>
+            <value>
+                <elementReference>Discount</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <startElementReference>Find_Related_Account</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>Stores the ID number of the account associated with the opportunity</description>
+        <name>AccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the revenue (in US dollars) of the account associated with the opportunity</description>
+        <name>AccountRevenue</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <description>Stores the discount percentage in whole number format</description>
+        <name>Discount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <description>Stores the ID number of the opportunity that triggered the flow</description>
+        <name>OpportunityId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

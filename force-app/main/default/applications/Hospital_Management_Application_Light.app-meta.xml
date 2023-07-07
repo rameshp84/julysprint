@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Hospital Management Application Light</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Doctor__c</tabs>
+    <tabs>Patient__c</tabs>
+    <tabs>Student_Registration_Form__c</tabs>
+    <tabs>Industry_Codes__c</tabs>
+    <tabs>Favorite__c</tabs>
+    <tabs>Interview_Form__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

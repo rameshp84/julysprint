@@ -1,0 +1,19 @@
+<apex:page controller="DisplayName">
+    <apex:form >
+    	<apex:pageBlock >
+        <apex:outputText > Name: </apex:outputText>
+        <apex:inputText label="Name" value="{!Name}"/>
+        &nbsp;
+        <apex:outputText > Age: </apex:outputText>
+        <apex:inputText label="Age" value="{!Age}"/>        
+        	<apex:pageBlockButtons location="Bottom">
+        		<apex:commandButton value="Click" reRender="Refresh"/> <br/><br/><br/>
+        	</apex:pageBlockButtons>                        
+            </apex:pageBlock>
+        <apex:outputLabel id="Refresh"> 
+            Clicked Name is: {!Name} <br/>
+            Clicked Age is: {!Age}
+        </apex:outputLabel>
+        
+    </apex:form>
+</apex:page>
